@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
     return (
@@ -30,10 +31,10 @@ const NavBar = () => {
     </div>
     <div className="navbar-end">
         <button>
-            <NavLink>profile</NavLink>
+            profile
         </button>
         <button>
-            <NavLink to="/login" >Login</NavLink>
+            <NavLink className="py-3 px-4 rounded-lg" to="/login" >Login</NavLink>
         </button>
     </div>
 </div>

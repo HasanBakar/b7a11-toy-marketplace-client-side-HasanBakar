@@ -5,7 +5,9 @@ import './index.css'
 import router from './Routers/Routers';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <div className="container mx-auto">
+    <React.StrictMode>
         <RouterProvider router={router} />
-  </React.StrictMode>,
+    </React.StrictMode>
+  </div>
 )

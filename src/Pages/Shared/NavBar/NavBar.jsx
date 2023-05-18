@@ -34,7 +34,7 @@ const NavBar = () => {
             profile
         </button>
         <button>
-            <NavLink className="py-3 px-4 rounded-lg" to="/login" >Login</NavLink>
+            <NavLink className="py-3 px-4 ml-2 rounded-lg" to="/login" >Login</NavLink>
         </button>
     </div>
 </div>

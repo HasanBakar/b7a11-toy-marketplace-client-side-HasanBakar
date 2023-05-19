@@ -1,6 +1,8 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+
 const ShopByCategory = () => {
+    
     return (
         <div>
             <div className="flex items-center py-8 space-x-1">

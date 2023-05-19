@@ -38,7 +38,7 @@ const Gallery = () => {
         <img
           alt="gallery"
           className="block h-full w-full rounded-lg object-cover object-center"
-          src="https://i.ibb.co/6DWJ6jS/Bus2.png" />
+          src="https://i.ibb.co/7yCYQzL/truck4.jpg" />
       </div>
       <div className="w-1/2 p-1 md:p-2">
         <img

@@ -19,7 +19,7 @@ const Footer = () => {
     <span className="footer-title">Contact Us</span> 
     <Link className="link link-hover">Email: demo@gmail.com</Link> 
     <Link className="link link-hover">Contact: +880 13XXXXXX </Link> 
-    <form className="link flex link-hover">
+    <form className="flex">
         <input type="text" name="email" id="email" placeholder="Accept our Newsletters" className="w-full border px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:outline-pink-600" />
         <button type="submit" className="block w-20 p-3 text-center rounded-sm text-gray-50 hover:bg-blue-600 bg-pink-500">Subscribe</button>
     </form> 

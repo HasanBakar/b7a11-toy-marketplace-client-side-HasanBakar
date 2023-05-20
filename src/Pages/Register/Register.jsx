@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
-import { useContext } from 'react';
+import { NavLink,useNavigate } from "react-router-dom";
+import { useContext, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from './../../Providers/AuthProviders/AuthProviders';
 const Register = () => {
-
+    const navigate = useNavigate();
+    const [registerError, setRegisterError] = useState("")
     const {createUser, setUser, Update} = useContext(AuthContext);
 
     const handleRegister = event =>{
@@ -17,14 +20,45 @@ const Register = () => {
             Update(name, photo)
             .then()
             .catch(error =>{
-                console.log(error.message);
+                setRegisterError(error.message);
+                toast.error('Please check your information right or wrong!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+
             })
             const u = result.user;
             setUser(u);
             form.reset();
+            navigate("/");
+            toast("Your registration is complete, now you are a member of our family!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        });
         })
         .catch(error =>{
-            console.log(error.message)
+            setRegisterError(error.message);
+            toast.error('Please check your information right or wrong!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         })
         
     }
@@ -33,6 +67,7 @@ const Register = () => {
       <div className="flex mt-4 justify-center items-center">
          <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800">
 	<h1 className="text-2xl font-bold text-center">Please Register</h1>
+    <p className="text-red-600 font-bold text-sm">{registerError}</p>
 	<form onSubmit={handleRegister} className="space-y-6 ng-untouched ng-pristine ng-valid">
 		<div className="space-y-1 text-sm">
 			<label htmlFor="name" className="block text-gray-600">Name</label>
@@ -64,10 +99,8 @@ const Register = () => {
                 <NavLink to="/login" rel="noopener noreferrer" className="underline text-pink-800">Please Login</NavLink>
             </p>
         </div>
-      </div>
-
-
-       
+      <ToastContainer />
+      </div>     
     );
 };
 

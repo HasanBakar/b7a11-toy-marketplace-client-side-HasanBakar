@@ -1,7 +1,34 @@
 /* eslint-disable react/no-unknown-property */
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { NavLink} from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from './../../../Providers/AuthProviders/AuthProviders';
 const NavBar = () => {
+    const {user,logOut} = useContext(AuthContext);
+    const dName = user?.displayName || "Abu Bakar";
+    const photo = user?.photoURL || "https://loremflickr.com/320/240";
+    // const photo = user.dis 
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(
+            toast("You are successfully logout!", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        })
+        )
+        .catch(error=>{
+            console.log(error.message);
+        })
+    }
+
     return (
 <div className="navbar bg-base-100">
     <div className="navbar-start">
@@ -30,13 +57,24 @@ const NavBar = () => {
         </ul>
     </div>
     <div className="navbar-end">
+        
+        
         <button>
-            profile
+           {
+            user ? <>
+        <button title={dName} className="avatar">
+            <span className="w-6 h-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={photo} />
+            </span>
         </button>
-        <button>
-            <NavLink className="py-3 px-4 ml-2 rounded-lg" to="/login" >Login</NavLink>
+        <button onClick={handleLogOut} className="ml-4">
+            LogOut
+        </button>
+        </> : <NavLink className="py-3 px-4 ml-2 rounded-lg" to="/login" >Login</NavLink>
+           }
         </button>
     </div>
+    <ToastContainer />
 </div>
     );
 };

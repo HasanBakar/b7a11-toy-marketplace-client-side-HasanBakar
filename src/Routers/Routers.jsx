@@ -25,12 +25,12 @@ const router = createBrowserRouter([
         {
             path:"/allToys",
             element:<AllToys></AllToys>,
-            loader: () => fetch("http://localhost:5000/allToys")
+            loader: () => fetch("https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToys")
         },
         {
             path:"/allToys/:id",
             element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/allToys/${params.id}`)
+            loader: ({params}) => fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToys/${params.id}`)
         },
         {
             path:"/myToys",

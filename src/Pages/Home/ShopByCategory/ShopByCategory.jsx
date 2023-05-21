@@ -15,7 +15,7 @@ const ShopByCategory = () => {
     }
 
     useEffect(()=>{
-       fetch(`http://localhost:5000/${tabControl}`)
+       fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/${tabControl}`)
         .then(res => res.json())
         .then(data =>setSameItems(data))
     },[tabControl])

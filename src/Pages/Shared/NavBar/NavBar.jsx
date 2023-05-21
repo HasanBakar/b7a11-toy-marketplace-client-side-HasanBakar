@@ -5,7 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NavLink} from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from './../../../Providers/AuthProviders/AuthProviders';
+
 const NavBar = () => {
+    
     const {user,logOut} = useContext(AuthContext);
     const dName = user?.displayName || "Abu Bakar";
     const photo = user?.photoURL || "https://loremflickr.com/320/240";
@@ -28,7 +30,7 @@ const NavBar = () => {
             console.log(error?.message);
         })
     }
-
+    
     return (
 <div className="navbar bg-base-100">
     <div className="navbar-start">
@@ -51,8 +53,18 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allToys">All Toys</NavLink></li>
-        <li><NavLink to="/myToys">My Toys</NavLink></li>
-        <li><NavLink to="/addAToy">Add A Toy</NavLink></li>
+        <button>
+            {user ?
+            <li><NavLink to="/myToys">My Toys</NavLink></li>
+            
+            : ""}
+        </button>
+        <button>
+            {user ?
+            <li><NavLink to="/addAToy">Add A Toy</NavLink></li>
+            : ""}
+        </button>
+       
         <li><NavLink to="/blogs">Blogs</NavLink></li>
         </ul>
     </div>

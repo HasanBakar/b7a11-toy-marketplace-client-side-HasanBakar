@@ -12,14 +12,14 @@ const Login = () => {
     const {logIn, setUser,googleSigIn} = useContext(AuthContext)
     const handleLogin = event =>{
         event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        const form = event?.target;
+        const email = form?.email?.value;
+        const password = form?.password?.value;
         logIn(email, password)
         .then(result=>{
-            setUser(result.user);
+            setUser(result?.user);
             navigate(rightRoad,{replace:true});
-            form.reset();
+            form?.reset();
             toast("You are successfully login with email and password!", {
                         position: "top-center",
                         autoClose: 5000,

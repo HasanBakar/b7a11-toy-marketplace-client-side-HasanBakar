@@ -11,6 +11,7 @@ import Blogs from './../Pages/Blogs/Blogs';
 import Login from './../Pages/Login/Login';
 import Register from './../Pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
+import ViewDetails from './../Pages/Shared/ViewDetails/ViewDetails';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,13 @@ const router = createBrowserRouter([
         },
         {
             path:"/allToys",
-            element:<AllToys></AllToys>
+            element:<AllToys></AllToys>,
+            loader: () => fetch("http://localhost:5000/allToys")
+        },
+        {
+            path:"/allToys/:id",
+            element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/allToys/${params.id}`)
         },
         {
             path:"/myToys",

@@ -1,8 +1,25 @@
+/* eslint-disable react/prop-types */
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { useState,useEffect } from 'react';
+import ToyCard from './../../Shared/ToyCard/ToyCard';
+
 
 const ShopByCategory = () => {
     
+    const [tabControl,setTabControl] = useState("car");
+
+    const [sameItems,setSameItems] = useState([]);
+     const handleTabItem = toyType =>{
+        setTabControl(toyType)
+    }
+
+    useEffect(()=>{
+       fetch(`http://localhost:5000/${tabControl}`)
+        .then(res => res.json())
+        .then(data =>setSameItems(data))
+    },[tabControl])
+
     return (
         <div>
             <div className="flex items-center py-8 space-x-1">
@@ -13,27 +30,59 @@ const ShopByCategory = () => {
             <div className="py-4 mb-6">
                 <Tabs>
                     <TabList>
-                    <Tab>Cars</Tab>
-                    <Tab>Buses</Tab>
-                    <Tab>Trucks</Tab>
-                    <Tab>Police Cars</Tab>
+                        <Tab>
+                            <button onClick={()=> handleTabItem("car")}>Cars</button>
+                        </Tab>
+                        <Tab>
+                            <button onClick={()=> handleTabItem("bus")}>Buses</button>
+                        </Tab>
+                        <Tab>
+                            <button onClick={()=> handleTabItem("truck")}>Trucks</button>
+                        </Tab>
+                        <Tab>
+                            <button onClick={()=> handleTabItem("policeCar")}>Police Cars</button>
+                        </Tab>
                     </TabList>
 
                     <TabPanel>
-                    <h2>Any content 1</h2>
-                    <p>You possess incredible potential within you. Every day is an opportunity to unlock that potential and achieve greatness. Embrace challenges as stepping stones to your success. Remember, setbacks are temporary and provide valuable lessons for growth. Stay focused on your goals and never lose sight of your dreams. Believe in yourself even when others doubt you. Your determination and perseverance will overcome any obstacle. Surround yourself with positive influences and like-minded individuals who inspire you to become the best version of yourself. Success is not a destination; it is a journey. Embrace each day with enthusiasm and unwavering belief in your abilities. You are unstoppable!</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {
+                        sameItems.map(item=><ToyCard
+                        key={item?._id}
+                        item={item}
+                        ></ToyCard>)
+                    }
+                    </div>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 2</h2>
-                    <p>You possess incredible potential within you. Every day is an opportunity to unlock that potential and achieve greatness. Embrace challenges as stepping stones to your success. Remember, setbacks are temporary and provide valuable lessons for growth. Stay focused on your goals and never lose sight of your dreams. Believe in yourself even when others doubt you. Your determination and perseverance will overcome any obstacle. Surround yourself with positive influences and like-minded individuals who inspire you to become the best version of yourself. Success is not a destination; it is a journey. Embrace each day with enthusiasm and unwavering belief in your abilities. You are unstoppable!</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {
+                        sameItems.map(item=><ToyCard
+                        key={item?._id}
+                        item={item}
+                        ></ToyCard>)
+                    }
+                    </div>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 3</h2>
-                    <p>You possess incredible potential within you. Every day is an opportunity to unlock that potential and achieve greatness. Embrace challenges as stepping stones to your success. Remember, setbacks are temporary and provide valuable lessons for growth. Stay focused on your goals and never lose sight of your dreams. Believe in yourself even when others doubt you. Your determination and perseverance will overcome any obstacle. Surround yourself with positive influences and like-minded individuals who inspire you to become the best version of yourself. Success is not a destination; it is a journey. Embrace each day with enthusiasm and unwavering belief in your abilities. You are unstoppable!</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {
+                        sameItems.map(item=><ToyCard
+                        key={item?._id}
+                        item={item}
+                        ></ToyCard>)
+                    }
+                    </div>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 4</h2>
-                    <p>You possess incredible potential within you. Every day is an opportunity to unlock that potential and achieve greatness. Embrace challenges as stepping stones to your success. Remember, setbacks are temporary and provide valuable lessons for growth. Stay focused on your goals and never lose sight of your dreams. Believe in yourself even when others doubt you. Your determination and perseverance will overcome any obstacle. Surround yourself with positive influences and like-minded individuals who inspire you to become the best version of yourself. Success is not a destination; it is a journey. Embrace each day with enthusiasm and unwavering belief in your abilities. You are unstoppable!</p>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {
+                        sameItems.map(item=><ToyCard
+                        key={item?._id}
+                        item={item}
+                        ></ToyCard>)
+                    }
+                    </div>
                     </TabPanel>
                 </Tabs>
             </div>

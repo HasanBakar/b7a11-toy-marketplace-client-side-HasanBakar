@@ -6,7 +6,7 @@ import { AuthContext } from './../../Providers/AuthProviders/AuthProviders';
 const Register = () => {
     const navigate = useNavigate();
     const [registerError, setRegisterError] = useState("")
-    const {createUser, setUser, Update} = useContext(AuthContext);
+    const {createUser,setSellerName, setUser, Update} = useContext(AuthContext);
 
     const handleRegister = event =>{
         event.preventDefault();
@@ -15,6 +15,7 @@ const Register = () => {
         const photo = form?.photo?.value;
         const email = form?.email?.value;
         const password = form?.password?.value;
+        setSellerName(name);
         createUser(email, password)
         .then(result=>{
             Update(name, photo)

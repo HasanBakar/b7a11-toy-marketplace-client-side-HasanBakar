@@ -8,10 +8,10 @@ import { AuthContext } from './../../../Providers/AuthProviders/AuthProviders';
 
 const NavBar = () => {
     
-    const {user,logOut} = useContext(AuthContext);
-    const dName = user?.displayName || "Abu Bakar";
+    const {user,sellerName,logOut} = useContext(AuthContext);
+    const dName = sellerName || user?.displayName || "Abu Bakar";
     const photo = user?.photoURL || "https://loremflickr.com/320/240";
-    // const photo = user.dis 
+    
 
     const handleLogOut = () =>{
         logOut()
@@ -55,7 +55,7 @@ const NavBar = () => {
         <li><NavLink to="/allToys">All Toys</NavLink></li>
         <button>
             {user ?
-            <li><NavLink to="/myToys">My Toys</NavLink></li>
+            <li><NavLink to={`/myToys/${dName}`} >My Toys</NavLink></li>
             
             : ""}
         </button>

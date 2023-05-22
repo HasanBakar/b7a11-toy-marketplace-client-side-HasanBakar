@@ -1,7 +1,10 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from "react";
+import { AuthContext } from './../../Providers/AuthProviders/AuthProviders';
 
 const AddAToy = () => {
+    const {sellerName} = useContext(AuthContext)
     const handleAddAToy = event =>{
         event.preventDefault();
         const form = event.target;
@@ -18,7 +21,7 @@ const AddAToy = () => {
 
         const item = {picture, name, sellerName, sellerEmail, subCategoryType, price, quantity, rating, description};
 
-        fetch('http://localhost:5000/addAToy', {
+        fetch('https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/addAToy', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +60,7 @@ const AddAToy = () => {
                 </div>
                 <div className="px-8 py-3">
                     <label className="font-semibold" htmlFor="seller name ">Seller name </label>
-                    <input type="text" className="w-full pl-3 py-2" name="sellerName" placeholder="seller name" defaultValue="" required />
+                    <input type="text" value={sellerName} className="w-full pl-3 py-2" name="sellerName" placeholder="seller name" defaultValue="" required />
                 </div>
                 <div className="px-8 py-3">
                     <label className="font-semibold" htmlFor="seller email">Seller email</label>

@@ -33,7 +33,8 @@ const logOut = () =>{
 
 const AuthProviders = ({children}) => {
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
+    const [sellerName, setSellerName]=useState("")
 
     useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, currentUser =>{
@@ -50,6 +51,7 @@ const AuthProviders = ({children}) => {
 
     const AuthInfo = {
         user,
+        sellerName, setSellerName,
         createUser,
         setUser,
         logIn,

@@ -33,8 +33,9 @@ const router = createBrowserRouter([
             loader: ({params}) => fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToys/${params.id}`)
         },
         {
-            path:"/myToys",
-            element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
+            path:"/myToys/:seller",
+            element:<PrivateRoute><MyToys></MyToys></PrivateRoute>,
+            loader: ({params}) => fetch(`https://toyquest-66897.web.app/myToys/${params.seller}`)
         },
         {
             path:"/addAToy",

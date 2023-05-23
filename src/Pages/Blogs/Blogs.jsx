@@ -18,7 +18,7 @@ const Blogs = () => {
             </div>
             <div className="box-content shadow-xl mb-5 py-8 px-6 bg-slate-100">
                 <h1 className="font-bold text-2xl">Q.2 Compare SQL and NoSQL databases?</h1>
-                <p>
+                <div>
                     <span className="font-medium text-xl">Characteristics of SQL and NoSQL databases:</span> <br />
 
                     <span className="font-medium text-xl">SQL Databases:</span> <br />
@@ -49,7 +49,7 @@ const Blogs = () => {
                             5. Use Cases: Handle unstructured, semi-structured, or rapidly changing data, ideal for real-time analytics, IoT data storage, and high scalability needs.
                         </li>
                     </ul> 
-                </p>
+                </div>
             </div>
             <div className="box-content shadow-xl py-8 mb-5 px-6 bg-slate-100">
                 <h1 className="font-bold text-2xl">Q.3 What is express js? What is Nest JS?</h1>

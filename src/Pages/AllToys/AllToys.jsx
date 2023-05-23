@@ -1,24 +1,24 @@
-import { useLoaderData } from "react-router-dom";
 import TableData from './TableData';
 import { useState,useEffect } from "react";
 
 const AllToys = () => {
-    const toys = useLoaderData()
-    const [searchControl, setSearchControl] = useState(toys);
-    const [searchText, setSearchText] = useState("");
+    const [searchText, setSearchText] = useState("N");
+    const [searchControl, setSearchControl] = useState([]);
+     const handleSearch = e =>{
+      e.preventDefault();
+      let tName = e.target.text.value;
+        setSearchText(tName);
+    }
 
      useEffect(()=>{
-       fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToy/search/${searchText}`)
+      if(searchText){
+         fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToy/search/${searchText}`)
       .then(res => res.json())
       .then(data=>setSearchControl(data))
+      }
+     },[searchText]);
+     
 
-     },[searchControl,searchText])
-
-    const handleSearch = e =>{
-      e.preventDefault();
-      const tName = e.target.text.value;
-        setSearchText(tName)
-    }
     return (
         <div>
             <h1 className="sm:text-3xl text-4xl text-center font-medium title-font mb-1 text-gray-900">All Toy in a Table</h1>
@@ -53,7 +53,7 @@ const AllToys = () => {
         </tbody>
       </table>
     </div>
-        </div>
+    </div>
     );
 };
 

@@ -9,7 +9,7 @@ import { AuthContext } from './../../../Providers/AuthProviders/AuthProviders';
 const NavBar = () => {
     
     const {user,sellerName,logOut} = useContext(AuthContext);
-    const dName = sellerName || user?.displayName || "Abu Bakar";
+    const dName = user?.displayName ||"Username" || sellerName;
     const photo = user?.photoURL || "https://loremflickr.com/320/240";
     
 
@@ -71,7 +71,7 @@ const NavBar = () => {
     <div className="navbar-end">
         
         
-        <button>
+        <div>
            {
             user ? <>
         <button title={dName} className="avatar">
@@ -84,7 +84,7 @@ const NavBar = () => {
         </button>
         </> : <NavLink className="py-3 px-4 ml-2 rounded-lg" to="/login" >Login</NavLink>
            }
-        </button>
+        </div>
     </div>
     <ToastContainer />
 </div>

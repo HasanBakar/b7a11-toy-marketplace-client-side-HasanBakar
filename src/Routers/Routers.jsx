@@ -24,8 +24,7 @@ const router = createBrowserRouter([
         },
         {
             path:"/allToys",
-            element:<AllToys></AllToys>,
-            loader: () => fetch("https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToys")
+            element:<AllToys></AllToys>
         },
         {
             path:"/allToys/:id",
@@ -33,9 +32,9 @@ const router = createBrowserRouter([
             loader: ({params}) => fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/allToys/${params.id}`)
         },
         {
-            path:"/myToys/:seller",
+            path:"/myToys/:sellerName",
             element:<PrivateRoute><MyToys></MyToys></PrivateRoute>,
-            loader: ({params}) => fetch(`https://toyquest-66897.web.app/myToys/${params.seller}`)
+            loader: ({params}) => fetch(`https://b7a11-toy-marketplace-server-side-hasan-bakar.vercel.app/myToys/${params.sellerName}`)
         },
         {
             path:"/addAToy",

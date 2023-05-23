@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from './../../Providers/AuthProviders/AuthProviders';
 
 const AddAToy = () => {
-    const {sellerName} = useContext(AuthContext)
+    const {sellerName, user} = useContext(AuthContext)
     const handleAddAToy = event =>{
         event.preventDefault();
         const form = event.target;
@@ -60,11 +60,11 @@ const AddAToy = () => {
                 </div>
                 <div className="px-8 py-3">
                     <label className="font-semibold" htmlFor="seller name ">Seller name </label>
-                    <input type="text" value={sellerName} className="w-full pl-3 py-2" name="sellerName" placeholder="seller name" defaultValue="" required />
+                    <input type="text" defaultValue={sellerName || user?.displayName} className="w-full pl-3 py-2" name="sellerName" placeholder="seller name" required />
                 </div>
                 <div className="px-8 py-3">
                     <label className="font-semibold" htmlFor="seller email">Seller email</label>
-                    <input type="email" className="w-full pl-3 py-2" name="sellerEmail" placeholder="Seller email" defaultValue="" required />
+                    <input type="email" className="w-full pl-3 py-2" name="sellerEmail" defaultValue={user?.email} placeholder="Seller email" required />
                 </div>
                 <div className="md:flex w-full">
                     <div className="px-8 py-3">
